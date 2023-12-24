@@ -1,7 +1,8 @@
 package ie.atu.compatibility;
 
-import ie.atu.compatibility.HardwareComponents.CPU;
+import ie.atu.compatibility.HardwareComponents.*;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -12,4 +13,21 @@ public interface CompatibilityClient {
 
     @GetMapping("/cpus")
     List<CPU> getCPUs(@RequestParam String name, @RequestParam String brand, @RequestParam Float price);
+
+    @GetMapping("/gpus")
+    List<GPU> getGPUs(@RequestParam String name, @RequestParam String brand, @RequestParam Float price);
+
+    @GetMapping("/motherboards")
+    ResponseEntity<List<Motherboard>> getMotherboards(
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String brand,
+            @RequestParam(required = false) Float price,
+            @RequestParam(required = false) String socket,
+            @RequestParam(required = false) List<String> compatibleRAMTypes);
+
+    @GetMapping("/rams")
+    List<RAM> getRAMs(@RequestParam String name, @RequestParam String brand, @RequestParam Float price);
+
+    @GetMapping("/storages")
+    List<Storage> getStorages(@RequestParam String name, @RequestParam String brand, @RequestParam Float price);
 }

@@ -1,15 +1,12 @@
 package ie.atu.compatibility;
 
 import ie.atu.compatibility.HardwareComponents.CPU;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import ie.atu.compatibility.HardwareComponents.Motherboard;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/compatibility")
 public class CompatibilityController {
     private final CompatibilityService compatibilityService;
 
@@ -22,4 +19,8 @@ public class CompatibilityController {
         return compatibilityService.getCPUS(null, null, null);
     }
 
+    @PostMapping("/motherboards")
+    public List<Motherboard> getMotherboards(@RequestBody(required = false) CompatilibityRequest compatibilityRequest) {
+        return compatibilityService.getCompatibleMotherboards(compatibilityRequest);
+    }
 }
