@@ -1,18 +1,22 @@
-package ie.atu.compatibility;
+package ie.atu.compatibility.HardwareComponents;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class GPU {
+public class Motherboard {
     private Long id;
 
     private String name;
     private float price;
     private String brand;
-    private float vram;
+    private String socket;
+    private String chipset;
+    private List<String> compatibleRAMTypes;
     private String ebaylink;
 }
