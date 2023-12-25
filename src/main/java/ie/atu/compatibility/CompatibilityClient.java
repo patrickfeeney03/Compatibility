@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient(name = "compatibility", url="http://localhost:8080")
+@FeignClient(name = "compatibility", url = "http://localhost:8080")
 public interface CompatibilityClient {
 
     @GetMapping("/cpus")
@@ -26,8 +26,17 @@ public interface CompatibilityClient {
             @RequestParam(required = false) List<String> compatibleRAMTypes);
 
     @GetMapping("/rams")
-    List<RAM> getRAMs(@RequestParam String name, @RequestParam String brand, @RequestParam Float price);
+    ResponseEntity<List<RAM>> getRAMs(
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String brand,
+            @RequestParam(required = false) Float price,
+            @RequestParam(required = false) List<String> cpuRamTypes,
+            @RequestParam(required = false) List<String> motherboardRamTypes);
 
     @GetMapping("/storages")
-    List<Storage> getStorages(@RequestParam String name, @RequestParam String brand, @RequestParam Float price);
+    ResponseEntity<List<Storage>> getStorages(
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String brand,
+            @RequestParam(required = false) Float price,
+            @RequestParam(required = false) List<String> storageTypes);
 }

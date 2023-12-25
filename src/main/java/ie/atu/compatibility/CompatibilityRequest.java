@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CompatilibityRequest {
+public class CompatibilityRequest {
     private CPU cpu;
     private GPU gpu;
     private Motherboard motherboard;

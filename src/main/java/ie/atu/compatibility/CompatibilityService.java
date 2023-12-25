@@ -3,6 +3,7 @@ package ie.atu.compatibility;
 import ie.atu.compatibility.HardwareComponents.CPU;
 import ie.atu.compatibility.HardwareComponents.Motherboard;
 import ie.atu.compatibility.HardwareComponents.RAM;
+import ie.atu.compatibility.HardwareComponents.Storage;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +23,7 @@ public class CompatibilityService {
         return CPUs;
     }
 
-    public List<Motherboard> getCompatibleMotherboards(CompatilibityRequest compatibilityRequest) {
+    public List<Motherboard> getCompatibleMotherboards(CompatibilityRequest compatibilityRequest) {
         String socket = null;
         List<String> compatibleRAMTypes = null;
 
@@ -48,5 +49,48 @@ public class CompatibilityService {
                 compatibleRAMTypes
         );
         return motherboards.getBody();
+    }
+
+    public List<RAM> getCompatibleRAMs(CompatibilityRequest compatibilityRequest) {
+        List<String> cpuRamTypes = null;
+        List<String> motherboardRamTypes = null;
+
+        if (compatibilityRequest != null) {
+            if (compatibilityRequest.getCpu() != null) {
+                cpuRamTypes = compatibilityRequest.getCpu().getCompatibleRAMTypes();
+            }
+            if (compatibilityRequest.getMotherboard() != null) {
+                motherboardRamTypes = compatibilityRequest.getMotherboard().getCompatibleRAMTypes();
+            }
+        }
+
+        ResponseEntity<List<RAM>> rams = compatibilityClient.getRAMs(
+                null,
+                null,
+                null,
+                cpuRamTypes,
+                motherboardRamTypes
+        );
+
+        return rams.getBody();
+    }
+
+    public List<Storage> getCompatibleStorages(CompatibilityRequest compatibilityRequest) {
+        List<String> storageTypes = null;
+
+        if (compatibilityRequest != null) {
+            if (compatibilityRequest.getMotherboard() != null) {
+                storageTypes = compatibilityRequest.getMotherboard().getCompatibleStorageTypes();
+            }
+        }
+
+        ResponseEntity<List<Storage>> storages = compatibilityClient.getStorages(
+                null,
+                null,
+                null,
+                storageTypes
+        );
+
+        return storages.getBody();
     }
 }

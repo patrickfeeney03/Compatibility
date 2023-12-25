@@ -18,5 +18,6 @@ public class Motherboard {
     private String socket;
     private String chipset;
     private List<String> compatibleRAMTypes;
+    private List<String> compatibleStorageTypes;
     private String ebaylink;
 }
