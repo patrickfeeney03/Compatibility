@@ -65,9 +65,6 @@ public class CompatibilityService {
         }
 
         ResponseEntity<List<RAM>> rams = compatibilityClient.getRAMs(
-                null,
-                null,
-                null,
                 cpuRamTypes,
                 motherboardRamTypes
         );
