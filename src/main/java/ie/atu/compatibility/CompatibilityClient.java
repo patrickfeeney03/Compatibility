@@ -19,9 +19,6 @@ public interface CompatibilityClient {
 
     @GetMapping("/motherboards")
     ResponseEntity<List<Motherboard>> getMotherboards(
-            @RequestParam(required = false) String name,
-            @RequestParam(required = false) String brand,
-            @RequestParam(required = false) Float price,
             @RequestParam(required = false) String socket,
             @RequestParam(required = false) List<String> compatibleRAMTypes);
 
@@ -32,8 +29,5 @@ public interface CompatibilityClient {
 
     @GetMapping("/storages")
     ResponseEntity<List<Storage>> getStorages(
-            @RequestParam(required = false) String name,
-            @RequestParam(required = false) String brand,
-            @RequestParam(required = false) Float price,
             @RequestParam(required = false) List<String> storageTypes);
 }

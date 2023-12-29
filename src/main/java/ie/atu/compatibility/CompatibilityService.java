@@ -18,11 +18,6 @@ public class CompatibilityService {
         this.compatibilityClient = compatibilityClient;
     }
 
-    public List<CPU> getCPUS(String name, String brand, Float price) {
-        List<CPU> CPUs = compatibilityClient.getCPUs(name, brand, price);
-        return CPUs;
-    }
-
     public List<Motherboard> getCompatibleMotherboards(CompatibilityRequest compatibilityRequest) {
         String socket = null;
         List<String> compatibleRAMTypes = null;
@@ -42,9 +37,6 @@ public class CompatibilityService {
         }
 
         ResponseEntity<List<Motherboard>> motherboards = compatibilityClient.getMotherboards(
-                null,
-                null,
-                null,
                 socket,
                 compatibleRAMTypes
         );
@@ -82,9 +74,6 @@ public class CompatibilityService {
         }
 
         ResponseEntity<List<Storage>> storages = compatibilityClient.getStorages(
-                null,
-                null,
-                null,
                 storageTypes
         );
 
