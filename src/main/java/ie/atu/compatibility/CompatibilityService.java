@@ -70,6 +70,7 @@ public class CompatibilityService {
         if (compatibilityRequest != null) {
             if (compatibilityRequest.getMotherboard() != null) {
                 storageTypes = compatibilityRequest.getMotherboard().getCompatibleStorageTypes();
+                System.out.println("Storage types: " + storageTypes);
             }
         }
 

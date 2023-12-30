@@ -28,6 +28,5 @@ public interface CompatibilityClient {
             @RequestParam(name = "motherboardRamTypes", required = false) List<String> motherboardRamTypes);
 
     @GetMapping("/storages")
-    ResponseEntity<List<Storage>> getStorages(
-            @RequestParam(required = false) List<String> storageTypes);
+    ResponseEntity<List<Storage>> getStorages(@RequestParam(required = false) List<String> storageTypes);
 }
