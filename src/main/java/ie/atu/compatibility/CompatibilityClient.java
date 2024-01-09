@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient(name = "compatibility", url = "http://localhost:8080")
+@FeignClient(name = "compatibility", url = "${feign.url}")
 public interface CompatibilityClient {
 
     @GetMapping("/cpus")
